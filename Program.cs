@@ -1,4 +1,5 @@
-﻿//Integrante 1
+﻿//Registro ventas
+//Integrante 1
 int [] precios = new int[10];
 int [] cantidades = new int[10];   
 string [] productos = new string[10];
