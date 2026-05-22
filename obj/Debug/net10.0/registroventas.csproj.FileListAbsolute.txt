@@ -1,0 +1,15 @@
+C:\proyectoscs\registroventas\registroventas\bin\Debug\net10.0\registroventas.exe
+C:\proyectoscs\registroventas\registroventas\bin\Debug\net10.0\registroventas.deps.json
+C:\proyectoscs\registroventas\registroventas\bin\Debug\net10.0\registroventas.runtimeconfig.json
+C:\proyectoscs\registroventas\registroventas\bin\Debug\net10.0\registroventas.dll
+C:\proyectoscs\registroventas\registroventas\bin\Debug\net10.0\registroventas.pdb
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.GeneratedMSBuildEditorConfig.editorconfig
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.AssemblyInfoInputs.cache
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.AssemblyInfo.cs
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.csproj.CoreCompileInputs.cache
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.sourcelink.json
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.dll
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\refint\registroventas.dll
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.pdb
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\registroventas.genruntimeconfig.cache
+C:\proyectoscs\registroventas\registroventas\obj\Debug\net10.0\ref\registroventas.dll
