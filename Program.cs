@@ -58,10 +58,10 @@ do
             break;
     }
 
-    if (!salir)
+    if (salir == false)
     {
         Console.WriteLine("\nPresione una tecla para continuar...");
         Console.ReadKey();
     }
 
-} while (!salir);
+} while (salir == false);
