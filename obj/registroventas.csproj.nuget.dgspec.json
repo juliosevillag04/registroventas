@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\proyectoscs\\registroventas\\registroventas\\registroventas.csproj": {}
+    "C:\\Users\\shane\\OneDrive\\Desktop\\Kevin\\registroventas\\registroventas.csproj": {}
   },
   "projects": {
-    "C:\\proyectoscs\\registroventas\\registroventas\\registroventas.csproj": {
+    "C:\\Users\\shane\\OneDrive\\Desktop\\Kevin\\registroventas\\registroventas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\proyectoscs\\registroventas\\registroventas\\registroventas.csproj",
+        "projectUniqueName": "C:\\Users\\shane\\OneDrive\\Desktop\\Kevin\\registroventas\\registroventas.csproj",
         "projectName": "registroventas",
-        "projectPath": "C:\\proyectoscs\\registroventas\\registroventas\\registroventas.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectoscs\\registroventas\\registroventas\\obj\\",
+        "projectPath": "C:\\Users\\shane\\OneDrive\\Desktop\\Kevin\\registroventas\\registroventas.csproj",
+        "packagesPath": "C:\\Users\\shane\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\shane\\OneDrive\\Desktop\\Kevin\\registroventas\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\shane\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
