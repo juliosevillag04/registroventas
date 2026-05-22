@@ -3,11 +3,11 @@ string[] nombres= new string[10];
 double[] precios = new double[10];
 int[] cantidades = new int[10];
 
-int totalProductos=0;
+int totalProductos=0 ;
 
 case 4:
 
-                    if (totalProductos == 0)
+                    while (totalProductos == 0)
                     {
                         Console.WriteLine("No hay productos.");
                         break;
