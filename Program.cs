@@ -1,250 +1,236 @@
-﻿//Registro ventas
-//Integrante 1
-int [] precios = new int[10];
-int [] cantidades = new int[10];   
-string [] productos = new string[10];
+﻿//Integrante 1 - Diseño de datos y menú principal
+int[] precios = new int[10];
+int[] cantidades = new int[10];
+string[] productos = new string[10];
+
 int totalProductos = 0;
+int opcion = 0;
+bool salir = false;
 
-//Integrante 2
-int totalProductos = 0;
-for(int i = 0; i < 10; i++)
-try
+do
 {
-    Console.WriteLine("Ingrese el nombre del producto:");
-    string nombre = Console.ReadLine();
-    if (string.IsNullOrEmpty(nombre))
+    Console.Clear();
+    Console.WriteLine("===== MENÚ =====");
+    Console.WriteLine("1. Registrar productos");
+    Console.WriteLine("2. Mostrar productos");
+    Console.WriteLine("3. Calcular total vendido");
+    Console.WriteLine("4. Mostrar producto más vendido");
+    Console.WriteLine("5. Mostrar promedio de ventas");
+    Console.WriteLine("6. Salir");
+    Console.Write("Seleccione una opción: ");
+
+    if (!int.TryParse(Console.ReadLine(), out opcion))
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        throw new Exception("El nombre del producto no puede estar vacío.");
-        Console.ResetColor();
+        Console.WriteLine("Error: ingrese una opción numérica.");
+        Console.ReadKey();
+        continue;
     }
-    nombres[i] = nombre;
 
-    Console.WriteLine("Ingrese el precio del producto:");
-    double precio = Convert.ToDouble(Console.ReadLine());
-    if (precio < 0)
+    switch (opcion)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        throw new Exception("El precio del producto no puede ser negativo.");
-        Console.ResetColor();
-    }
-    precios[i] = precio;
-
-    Console.WriteLine("Ingrese la cantidad del producto:");
-    int cantidad = Convert.ToInt32(Console.ReadLine());
-    if (cantidad < 0)
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        throw new Exception("La cantidad del producto no puede ser negativa.");
-        Console.ResetColor();
-    }
-    cantidades[i] = cantidad;
-
-    totalProductos++;
-}
-catch (Exception ex)
-{
-    Console.WriteLine($"Error: {ex.Message}");
-}
-
-//Integrante 3
-case 1:
-            if (contador >= 10)
-            {
-                Console.WriteLine("Limite alcanzado.");
-                break;
-            }
-
-            Console.WriteLine("\n--- Registrar Producto ---");
-
-            string nombre;
-            do
-            {
-                Console.Write("Nombre del producto: ");
-                nombre = Console.ReadLine();
-                if (nombre.Trim() == "")
-                {
-                    Console.WriteLine("El nombre no puede estar vacío.");
-                }
-            } while (nombre.Trim() == "");
-            nombres[contador] = nombre;
-            double precio;
-            do
-            {
-                Console.Write("Precio: ");
-                precio = double.Parse(Console.ReadLine());
-                if (precio <= 0)
-                {
-                    Console.WriteLine("El precio debe ser mayor a 0.");
-                }
-            } while (precio <= 0);
-            precios[contador] = precio;
-
-            int cantidad;
-            do
-            {
-                Console.Write("Cantidad vendida: ");
-                cantidad = int.Parse(Console.ReadLine());
-                if (cantidad < 0)
-                {
-                    Console.WriteLine("La cantidad no puede ser negativa.");
-                }
-            } while (cantidad < 0);
-            cantidades[contador] = cantidad;
-
-            contador++;
-
-            Console.WriteLine("Producto registrado exitosamente.");
+        case 1:
+            RegistrarProductos();
             break;
 
-            case 2:
-            if (contador == 0)
-            {
-                Console.WriteLine("No hay productos registrados.");
-            }
-            else
-            {
-                Console.WriteLine("\n===== PRODUCTOS =====");
-                Console.WriteLine("{0,-15} {1,10} {2,10}", "Producto", "Precio", "Cantidad");
-                Console.WriteLine(new string('-', 40));
-
-                for (int i = 0; i < contador; i++)
-                {
-                    Console.WriteLine("{0,-15} ${1,9:F2} {2,10}",
-                        nombres[i],
-                        precios[i],
-                        cantidades[i]);
-                }
-            }
+        case 2:
+            MostrarProductos();
             break;
 
         case 3:
-            if (contador == 0)
-            {
-                Console.WriteLine("No hay productos registrados.");
-            }
-            else
-            {
-                double total = 0;
-
-                for (int i = 0; i < contador; i++)
-                {
-                    total += precios[i] * cantidades[i];
-                }
-
-                Console.WriteLine("\n===== TOTAL VENDIDO =====");
-                Console.WriteLine("Total acumulado: $" + total.ToString("F2"));
-            }
+            MostrarTotalVendido();
             break;
 
         case 4:
-            if (contador == 0)
-            {
-                Console.WriteLine("No hay productos registrados.");
-            }
-            else
-            {
-                int mayor = cantidades[0];
-                int posicion = 0;
-
-                for (int i = 1; i < contador; i++)
-                {
-                    if (cantidades[i] > mayor)
-                    {
-                        mayor = cantidades[i];
-                        posicion = i;
-                    }
-                }
-
-                Console.WriteLine("\n===== PRODUCTO MÁS VENDIDO =====");
-                Console.WriteLine("Nombre: " + nombres[posicion]);
-                Console.WriteLine("Cantidad vendida: " + mayor);
-            }
+            MostrarProductoMasVendido();
             break;
 
         case 5:
-            if (contador == 0)
-            {
-                Console.WriteLine("No hay productos registrados.");
-            }
-            else
-            {
-                double suma = 0;
-
-                for (int i = 0; i < contador; i++)
-                {
-                    suma += precios[i] * cantidades[i];
-                }
-
-                double promedio = suma / contador;
-
-                Console.WriteLine("\n===== PROMEDIO DE VENTAS =====");
-                Console.WriteLine("Total vendido: $" + suma.ToString("F2"));
-                Console.WriteLine("Cantidad de productos: " + contador);
-                Console.WriteLine("Promedio: $" + promedio.ToString("F2"));
-            }
+            MostrarPromedioVentas();
             break;
 
         case 6:
             salir = true;
-            Console.WriteLine("¡Gracias por usar el programa!");
+            Console.WriteLine("Saliendo del sistema...");
             break;
 
         default:
             Console.WriteLine("Opción inválida.");
             break;
     }
+
+    if (salir == false)
+    {
+        Console.WriteLine("\nPresione una tecla para continuar...");
+        Console.ReadKey();
+    }
+
+} while (salir == false);
+
+//Integrante 2 - Entrada de datos y validaciones
+int RegistrarProductos()
+{
+    if (totalProductos >= productos.Length)
+    {
+        Console.WriteLine("Ya se registraron los 10 productos.");
+        return 0;
+    }
+
+    Console.WriteLine("===== REGISTRAR PRODUCTO =====");
+
+    string nombre = "";
+
+    do
+    {
+        Console.Write("Nombre del producto: ");
+        nombre = Console.ReadLine()!;
+
+        if (nombre == "")
+        {
+            Console.WriteLine("Error: el nombre no puede estar vacío.");
+        }
+
+    } while (nombre == "");
+
+    int precio = 0;
+
+    do
+    {
+        Console.Write("Precio del producto: ");
+
+        if (!int.TryParse(Console.ReadLine(), out precio))
+        {
+            Console.WriteLine("Error: ingrese solo números enteros.");
+            precio = -1;
+        }
+        else if (precio <= 0)
+        {
+            Console.WriteLine("Error: el precio debe ser mayor que 0.");
+        }
+
+    } while (precio <= 0);
+
+    int cantidad = 0;
+
+    do
+    {
+        Console.Write("Cantidad vendida: ");
+
+        if (!int.TryParse(Console.ReadLine(), out cantidad))
+        {
+            Console.WriteLine("Error: ingrese solo números enteros.");
+            cantidad = -1;
+        }
+        else if (cantidad < 0)
+        {
+            Console.WriteLine("Error: la cantidad no puede ser negativa.");
+        }
+
+    } while (cantidad < 0);
+
+    productos[totalProductos] = nombre;
+    precios[totalProductos] = precio;
+    cantidades[totalProductos] = cantidad;
+
+    totalProductos++;
+
+    Console.WriteLine("Producto registrado correctamente.");
+
+    return 0;
 }
 
-//Integrante 4
-int totalProductos=0;
+//Integrante 3 - Procesamiento de datos
+int ObtenerTotalVendido()
+{
+    int totalVendido = 0;
 
-case 4:
+    for (int i = 0; i < totalProductos; i++)
+    {
+        totalVendido += precios[i] * cantidades[i];
+    }
 
-                    if (totalProductos == 0)
-                    {
-                        Console.WriteLine("No hay productos.");
-                        break;
-                    }
+    return totalVendido;
+}
 
-                    int mayor = cantidades[0];
-                    int posicion = 0;
+int MostrarTotalVendido()
+{
+    if (totalProductos == 0)
+    {
+        Console.WriteLine("No hay productos registrados.");
+        return 0;
+    }
 
-                    for (int i = 1; i < totalProductos; i++)
-                    {
-                        if (cantidades[i] > mayor)
-                        {
-                            mayor = cantidades[i];
-                            posicion = i;
-                        }
-                    }
-Console.WriteLine("Producto más vendido: " + nombres[posicion]);
-                    Console.WriteLine("Cantidad vendida: " + mayor);
+    int totalVendido = ObtenerTotalVendido();
 
-                    break;
+    Console.WriteLine("===== TOTAL VENDIDO =====");
+    Console.WriteLine("Total acumulado: C$ " + totalVendido);
 
-                case 5:
+    return 0;
+}
 
-                    double suma = 0;
+//Integrante 4 - Salida, reportes y pruebas
+int MostrarProductos()
+{
+    if (totalProductos == 0)
+    {
+        Console.WriteLine("No hay productos registrados.");
+        return 0;
+    }
 
-                    for (int i = 0; i < totalProductos; i++)
-                    {
-                        suma += precios[i] * cantidades[i];
-                    }
+    Console.WriteLine("===== PRODUCTOS REGISTRADOS =====");
+    Console.WriteLine("{0,-15} {1,10} {2,10}", "Producto", "Precio", "Cantidad");
+    Console.WriteLine(new string('-', 40));
 
-                    double promedio = suma / totalProductos;
+    for (int i = 0; i < totalProductos; i++)
+    {
+        Console.WriteLine("{0,-15} C${1,9} {2,10}",
+            productos[i],
+            precios[i],
+            cantidades[i]);
+    }
 
-                    Console.WriteLine("Promedio de ventas: " + promedio);
+    return 0;
+}
 
-                    break;
+int MostrarProductoMasVendido()
+{
+    if (totalProductos == 0)
+    {
+        Console.WriteLine("No hay productos registrados.");
+        return 0;
+    }
 
-                case 6:
+    int posicionMayor = 0;
 
-                         salir = true;
-                    Console.WriteLine("Saliendo del sistema...");
-                    break;
+    for (int i = 1; i < totalProductos; i++)
+    {
+        if (cantidades[i] > cantidades[posicionMayor])
+        {
+            posicionMayor = i;
+        }
+    }
 
-                default:
+    Console.WriteLine("===== PRODUCTO MÁS VENDIDO =====");
+    Console.WriteLine("Producto: " + productos[posicionMayor]);
+    Console.WriteLine("Cantidad vendida: " + cantidades[posicionMayor]);
 
-                    Console.WriteLine("la opción escogida es inválida.");
-                    break;
+    return 0;
+}
+
+int MostrarPromedioVentas()
+{
+    if (totalProductos == 0)
+    {
+        Console.WriteLine("No hay productos registrados.");
+        return 0;
+    }
+
+    int totalVendido = ObtenerTotalVendido();
+    double promedio = (double)totalVendido / totalProductos;
+
+    Console.WriteLine("===== PROMEDIO DE VENTAS =====");
+    Console.WriteLine("Total vendido: C$ " + totalVendido);
+    Console.WriteLine("Productos registrados: " + totalProductos);
+    Console.WriteLine("Promedio de ventas: C$ " + promedio.ToString("F2"));
+
+    return 0;
+}
