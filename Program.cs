@@ -1,159 +1,82 @@
-﻿//tarea2
+﻿//Integrante 2
 
-using System;
-
-string[] nombres = new string[10];
-double[] precios = new double[10];
+int[] precios = new int[10];
 int[] cantidades = new int[10];
+string[] productos = new string[10];
 
 int totalProductos = 0;
-int opcion;
+int opcion = 0;
+bool salir = false;
 
-do
+
+
+int RegistrarProductos()
 {
-    Console.Clear();
-
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine("===== MENU =====");
-    Console.ResetColor();
-
-    Console.WriteLine("1. Registrar productos");
-    Console.WriteLine("2. Mostrar productos");
-    Console.WriteLine("3. Salir");
-    Console.Write("\nSeleccione una opción: ");
-
-    int.TryParse(Console.ReadLine(), out opcion);
-
-    switch (opcion)
+    if (totalProductos >= productos.Length)
     {
-        case 1:
-
-            for (int i = totalProductos; i < 10; i++)
-            {
-                Console.Clear();
-
-                Console.WriteLine($"Producto #{i + 1}");
-
-                // NOMBRE
-                string nombre;
-
-                do
-                {
-                    Console.Write("Ingrese el nombre del producto: ");
-                    nombre = Console.ReadLine();
-
-                    if (string.IsNullOrWhiteSpace(nombre))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("El nombre no puede estar vacío.");
-                        Console.ResetColor();
-                    }
-
-                } while (string.IsNullOrWhiteSpace(nombre));
-
-                nombres[i] = nombre;
-
-                // PRECIO
-                double precio;
-
-                do
-                {
-                    Console.Write("Ingrese el precio del producto: ");
-
-                    if (!double.TryParse(Console.ReadLine(), out precio) || precio < 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Ingrese un precio válido.");
-                        Console.ResetColor();
-
-                        precio = -1;
-                    }
-
-                } while (precio < 0);
-
-                precios[i] = precio;
-
-                // CANTIDAD
-                int cantidad;
-
-                do
-                {
-                    Console.Write("Ingrese la cantidad del producto: ");
-
-                    if (!int.TryParse(Console.ReadLine(), out cantidad) || cantidad < 0)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Ingrese una cantidad válida.");
-                        Console.ResetColor();
-
-                        cantidad = -1;
-                    }
-
-                } while (cantidad < 0);
-
-                cantidades[i] = cantidad;
-
-                totalProductos++;
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\nProducto registrado correctamente.");
-                Console.ResetColor();
-
-                Console.Write("\n¿Desea registrar otro producto? (s/n): ");
-                string respuesta = Console.ReadLine().ToLower();
-
-                if (respuesta != "s")
-                {
-                    break;
-                }
-            }
-
-            break;
-
-        case 2:
-
-            Console.Clear();
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("===== PRODUCTOS =====");
-            Console.ResetColor();
-
-            if (totalProductos == 0)
-            {
-                Console.WriteLine("No hay productos registrados.");
-            }
-            else
-            {
-                for (int i = 0; i < totalProductos; i++)
-                {
-                    Console.WriteLine(
-                        $"{i + 1}. {nombres[i]} | Precio: {precios[i]} | Cantidad: {cantidades[i]}"
-                    );
-                }
-            }
-
-            Console.WriteLine("\nPresione una tecla para volver...");
-            Console.ReadKey();
-
-            break;
-
-        case 3:
-
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Saliendo del sistema...");
-            Console.ResetColor();
-
-            break;
-
-        default:
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Opción inválida.");
-            Console.ResetColor();
-
-            Console.ReadKey();
-
-            break;
+        Console.WriteLine("Ya se registraron los 10 productos.");
+        return 0;
     }
 
-} while (opcion != 3);
+    Console.WriteLine("===== REGISTRAR PRODUCTO =====");
+
+    string nombre = "";
+
+    do
+    {
+        Console.Write("Nombre del producto: ");
+        nombre = Console.ReadLine()!;
+
+        if (nombre == "")
+        {
+            Console.WriteLine("Error: el nombre no puede estar vacío.");
+        }
+
+    } while (nombre == "");
+
+    int precio = 0;
+
+    do
+    {
+        Console.Write("Precio del producto: ");
+
+        if (!int.TryParse(Console.ReadLine(), out precio))
+        {
+            Console.WriteLine("Error: ingrese solo números enteros.");
+            precio = -1;
+        }
+        else if (precio <= 0)
+        {
+            Console.WriteLine("Error: el precio debe ser mayor que 0.");
+        }
+
+    } while (precio <= 0);
+
+    int cantidad = 0;
+
+    do
+    {
+        Console.Write("Cantidad vendida: ");
+
+        if (!int.TryParse(Console.ReadLine(), out cantidad))
+        {
+            Console.WriteLine("Error: ingrese solo números enteros.");
+            cantidad = -1;
+        }
+        else if (cantidad < 0)
+        {
+            Console.WriteLine("Error: la cantidad no puede ser negativa.");
+        }
+
+    } while (cantidad < 0);
+
+    productos[totalProductos] = nombre;
+    precios[totalProductos] = precio;
+    cantidades[totalProductos] = cantidad;
+
+    totalProductos++;
+
+    Console.WriteLine("Producto registrado correctamente.");
+
+    return 0;
+}
